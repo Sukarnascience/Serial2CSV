@@ -2,6 +2,7 @@ import argparse
 from colorama import init, Fore
 import serial
 import csv
+import time
 
 init(autoreset=True)
 connect_state = False
@@ -41,6 +42,8 @@ def main():
     print(Fore.YELLOW + "To Terminate/Stop u can press [Ctrl+C]")
     print()
     file_name = args.filename
+
+    time.sleep(2)
 
     connect(str(args.port),int(args.baud))
     while isConnect():
