@@ -67,7 +67,7 @@ For users of Linux and macOS, follow these steps to set up Serial2CSV:
 Once you've set up Serial2CSV, you can log data from your Arduino by running the following command:
 
 ```bash
-python Serial2CSV.py -p COMX -b 9600 -f output.csv
+python serial2csv.py -p COMX -b 9600 -f output.csv
 ```
 
 * `-p` or `--port`: Specify the serial port to which your Arduino is connected (e.g., COM3).
@@ -76,7 +76,7 @@ python Serial2CSV.py -p COMX -b 9600 -f output.csv
 
 example: 
 ```bash
-python mycode.py -p COM3 -b 9600 -f output.csv
+python serial2csv.py -p COM3 -b 9600 -f output.csv
 ```
 * **Data Logging**: Serial2CSV will continuously log data from the serial port and save it into the specified CSV file.
 
