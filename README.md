@@ -75,9 +75,16 @@ python serial2csv.py -p COMX -b 9600 -f output.csv
 * `-f` or `--filename`: Choose the name for the output CSV file.
 
 example: 
-```bash
-python serial2csv.py -p COM3 -b 9600 -f output.csv
-```
+* Windows
+    ```bash
+    python serial2csv.py -p COM3 -b 9600 -f output.csv
+    ```
+* Linux and macOS 
+    ```bash
+    python3 serial2csv.py -p /dev/ttyACM0 -b 9600 -f output.csv
+    ```
+
+    
 * **Data Logging**: Serial2CSV will continuously log data from the serial port and save it into the specified CSV file.
 
 * **Stop Logging**: To stop data logging, press `Ctrl+C` in the terminal where Serial2CSV is running.
