@@ -23,7 +23,7 @@ Windows users can set up Serial2CSV by following these steps:
 1. **Clone the Repository**: Start by cloning this repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/Serial2CSV.git
+    git clone https://github.com/Sukarnascience/Serial2CSV.git
     ```
 
 2. **Navigate to the Project Directory**: Change your current directory to the project directory:
@@ -47,7 +47,7 @@ For users of Linux and macOS, follow these steps to set up Serial2CSV:
 1. **Clone the Repository**: Start by cloning this repository to your local machine:
 
     ```bash
-    git clone https://github.com/SukarnaScience/Serial2CSV.git
+    git clone https://github.com/Sukarnascience/Serial2CSV.git
     ```
 
 2. **Navigate to the Project Directory**: Change your current directory to the project directory:
@@ -112,4 +112,4 @@ void loop() {
 
 # License
 
-This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
