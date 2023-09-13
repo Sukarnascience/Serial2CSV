@@ -110,6 +110,36 @@ void loop() {
 }
 ```
 
+> Dummy Code to Upload on Arduino to test
+```c
+void setup() {
+  Serial.begin(9600);  // Set the baud rate to match your receiving device
+  randomSeed(analogRead(0));  // Initialize the random number generator with a seed
+}
+
+void loop() {
+  static int SNo = 0;  // Initialize the serial number counter
+
+  // Print SNo as the first value in the CSV format
+  Serial.print(SNo);
+
+  // Generate and print 8 random integers
+  for (int i = 0; i < 8; i++) {
+    int randomValue = random(0, 101);  // Generate a random integer between 0 and 100 (adjust as needed)
+    
+    // Print a comma and the random integer value
+    Serial.print(",");
+    Serial.print(randomValue);
+  }
+
+  Serial.println();  // Print a newline character to indicate the end of the CSV line
+
+  SNo++;  // Increment the serial number counter
+  delay(1000);  // Delay for a second (adjust as needed for your desired data rate)
+}
+
+```
+
 # License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
