@@ -38,13 +38,18 @@ def main():
     print(Fore.CYAN + "Selected Serial Port: " + Fore.YELLOW + str(args.port))
     print(Fore.CYAN + "Baud Rate           : " + Fore.YELLOW + str(args.baud))
     print(Fore.CYAN + "Output Filename     : " + Fore.YELLOW + str(args.filename))
+    print(Fore.YELLOW + "To Terminate/Stop u can press [Ctrl+C]")
     print()
-    file_name = file_name
+    file_name = args.filename
 
     connect(str(args.port),int(args.baud))
     while isConnect():
-        printData()
-        saveData()
+        try:
+            #printData()
+            saveData()
+        except KeyboardInterrupt:
+            break
+
 
 def connect(portNo,baud):
     global connect_state, device
@@ -69,15 +74,34 @@ def printData():
             data = (ser_bytes[0:len(ser_bytes)-2]).decode("utf-8")
             if(data != ""):
                 print(Fore.GREEN + data)
+                value_list = [int(value) for value in data.split(",")]
+                print(value_list)
         else:
             print(Fore.RED + "[ERROR] Something Sent Wrong")
             exit()
     except:
+        device.close()
         print(Fore.RED + "[ERROR] Something Sent Wrong")
         exit()
 
 def saveData():
-    pass
+    try:
+        if isConnect():
+            ser_bytes = device.readline()
+            data = (ser_bytes[0:len(ser_bytes) - 2]).decode("utf-8")
+            if data != "":
+                value_list = [int(value) for value in data.split(",")]
+
+                # Open the CSV file in append mode and write the data
+                with open(file_name, mode='a', newline='') as csv_file:
+                    csv_writer = csv.writer(csv_file)
+                    csv_writer.writerow(value_list)
+                    print(Fore.CYAN + "Data saved to CSV:", value_list)
+
+    except Exception as e:
+        device.close()
+        print(Fore.RED + "[ERROR] Something Went Wrong While Saving Data:", str(e))
+
 
 if __name__ == "__main__":
     main()
