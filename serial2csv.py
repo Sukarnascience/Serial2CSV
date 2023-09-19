@@ -75,9 +75,10 @@ def printData():
         if(isConnect()):
             ser_bytes = device.readline()
             data = (ser_bytes[0:len(ser_bytes)-2]).decode("utf-8")
+            #print(data)
             if(data != ""):
                 print(Fore.GREEN + data)
-                value_list = [int(value) for value in data.split(",")]
+                value_list = [eval(value) for value in data.split(",")]
                 print(value_list)
         else:
             print(Fore.RED + "[ERROR] Something Sent Wrong")
@@ -92,8 +93,9 @@ def saveData():
         if isConnect():
             ser_bytes = device.readline()
             data = (ser_bytes[0:len(ser_bytes) - 2]).decode("utf-8")
+            #print(data)
             if data != "":
-                value_list = [int(value) for value in data.split(",")]
+                value_list = [eval(value) for value in data.split(",")]
 
                 # Open the CSV file in append mode and write the data
                 with open(file_name, mode='a', newline='') as csv_file:
